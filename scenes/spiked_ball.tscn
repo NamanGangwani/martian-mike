@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b5s57qk3lrjaq"]
+
+[ext_resource type="Script" uid="uid://bsi1sqja1rliq" path="res://scripts/trap.gd" id="1_x1r4e"]
+[ext_resource type="Texture2D" uid="uid://cs2wm8fc0jfym" path="res://assets/textures/other/Spiked Ball.png" id="2_67wju"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tjg15"]
+radius = 11.045361
+
+[node name="SpikedBall" type="Node2D" unique_id=2052323500]
+script = ExtResource("1_x1r4e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=783179192]
+texture = ExtResource("2_67wju")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1502631203]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=234580635]
+shape = SubResource("CircleShape2D_tjg15")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=870064143]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://tanvuq77lclr" path="res://scenes/player.tscn" id="2_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://dtj7ux6ec3udf" path="res://icon.svg" id="3_w8frs"]
 [ext_resource type="PackedScene" uid="uid://bciyevbbav6rs" path="res://scenes/jump_pad.tscn" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://dutmbif8xvi6p" path="res://scenes/saw.tscn" id="4_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://b5s57qk3lrjaq" path="res://scenes/spiked_ball.tscn" id="5_2r41h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mx8sn"]
 size = Vector2(830, 20)
@@ -40,13 +42,25 @@ position = Vector2(-76.5, 404)
 shape = SubResource("RectangleShape2D_w8frs")
 
 [node name="StartPosition" type="Marker2D" parent="." unique_id=1252651327]
-position = Vector2(316, 160)
+position = Vector2(265, 179)
 
-[node name="JumpPad" parent="." unique_id=1233626973 instance=ExtResource("4_mx8sn")]
-position = Vector2(321, 221)
+[node name="Traps" type="Node2D" parent="." unique_id=2075218145]
 
-[node name="JumpPad2" parent="." unique_id=1015720388 instance=ExtResource("4_mx8sn")]
-position = Vector2(272, 221)
+[node name="Saw" parent="Traps" unique_id=2052323500 instance=ExtResource("4_ppgk2")]
+position = Vector2(345, 210)
+
+[node name="SpikedBall" parent="Traps" unique_id=2113967192 instance=ExtResource("5_2r41h")]
+position = Vector2(39, 207)
+
+[node name="Objects" type="Node2D" parent="." unique_id=915400097]
+
+[node name="JumpPad" parent="Objects" unique_id=1233626973 instance=ExtResource("4_mx8sn")]
+position = Vector2(174, 221)
+
+[node name="JumpPad2" parent="Objects" unique_id=1015720388 instance=ExtResource("4_mx8sn")]
+position = Vector2(125, 221)
 jump_force = 350
 
 [connection signal="body_entered" from="Deathzone" to="." method="_on_deathzone_body_entered"]
+[connection signal="touched_player" from="Traps/Saw" to="." method="_on_trap_touched_player"]
+[connection signal="touched_player" from="Traps/SpikedBall" to="." method="_on_trap_touched_player"]
