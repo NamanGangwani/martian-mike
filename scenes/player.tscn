@@ -211,3 +211,5 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1585735435]
 position = Vector2(0.5, -11.5)
 shape = SubResource("RectangleShape2D_gl8cc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=207966200]
