@@ -6,19 +6,59 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_tjg15"]
 radius = 11.045361
 
+[sub_resource type="Animation" id="Animation_67wju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tjg15"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(100, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8egs4"]
+_data = {
+&"RESET": SubResource("Animation_67wju"),
+&"move": SubResource("Animation_tjg15")
+}
+
 [node name="SpikedBall" type="Node2D" unique_id=2052323500]
 script = ExtResource("1_x1r4e")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=783179192]
-texture = ExtResource("2_67wju")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1502631203]
 collision_layer = 8
 collision_mask = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=783179192]
+texture = ExtResource("2_67wju")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=234580635]
 shape = SubResource("CircleShape2D_tjg15")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=870064143]
+libraries/ = SubResource("AnimationLibrary_8egs4")
+autoplay = &"move"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -47,10 +47,10 @@ position = Vector2(265, 179)
 [node name="Traps" type="Node2D" parent="." unique_id=2075218145]
 
 [node name="Saw" parent="Traps" unique_id=2052323500 instance=ExtResource("4_ppgk2")]
-position = Vector2(345, 210)
+position = Vector2(51, 181)
 
 [node name="SpikedBall" parent="Traps" unique_id=2113967192 instance=ExtResource("5_2r41h")]
-position = Vector2(39, 207)
+position = Vector2(356, 211)
 
 [node name="Objects" type="Node2D" parent="." unique_id=915400097]
 

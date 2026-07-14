@@ -6,20 +6,75 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_kprxg"]
 radius = 18.0
 
+[sub_resource type="Animation" id="Animation_kprxg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_846d5"]
+resource_name = "spin"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"test"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_161w5"]
+_data = {
+&"RESET": SubResource("Animation_kprxg"),
+&"spin": SubResource("Animation_846d5")
+}
+
 [node name="Saw" type="Node2D" unique_id=2052323500]
 script = ExtResource("1_kprxg")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1672813664]
-texture = ExtResource("1_k45r4")
-hframes = 8
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1502631203]
 collision_layer = 8
 collision_mask = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1672813664]
+texture = ExtResource("1_k45r4")
+hframes = 8
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=234580635]
 shape = SubResource("CircleShape2D_kprxg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=870064143]
+libraries/ = SubResource("AnimationLibrary_161w5")
+autoplay = &"spin"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
