@@ -6,7 +6,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var traps = get_tree().get_nodes_in_group("traps")
+	for trap in traps:
+		# trap.connect("touched_player", _on_trap_touched_player)
+		trap.touched_player.connect(_on_trap_touched_player) #godot 4 way
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

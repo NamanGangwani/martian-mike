@@ -44,7 +44,7 @@ _data = {
 &"move": SubResource("Animation_tjg15")
 }
 
-[node name="SpikedBall" type="Node2D" unique_id=2052323500]
+[node name="SpikedBall" type="Node2D" unique_id=2052323500 groups=["traps"]]
 script = ExtResource("1_x1r4e")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1502631203]
