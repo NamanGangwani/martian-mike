@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var start = $Start
 @onready var exit = $Exit
+@onready var deathzone = $Deathzone
 
 var player = null
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 		trap.touched_player.connect(_on_trap_touched_player) #godot 4 way
 
 	exit.body_entered.connect(_on_exit_body_entered)
+	deathzone.body_entered.connect(_on_deathzone_body_entered)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
