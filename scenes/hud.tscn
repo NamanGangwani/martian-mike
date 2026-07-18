@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4fv0umlyq5ta"]
 
-[ext_resource type="Script" uid="uid://u51uimc67v42" path="res://scenes/hud.gd" id="1_oo0fn"]
+[ext_resource type="Script" uid="uid://u51uimc67v42" path="res://scripts/hud.gd" id="1_oo0fn"]
 [ext_resource type="FontFile" uid="uid://rob45ndhjwo6" path="res://assets/fonts/Kenney Pixel Square.ttf" id="2_5ysmq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6fi6k"]

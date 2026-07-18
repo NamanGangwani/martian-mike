@@ -1,12 +1,14 @@
 extends Node2D
 
 @export var next_level: PackedScene = null
+@export var is_final_level: bool = false
 
 @onready var start = $Start
 @onready var exit = $Exit
 @onready var deathzone = $Deathzone
 
 @onready var hud = $UILayer/HUD
+@onready var ui_layer = $UILayer
 
 var player = null
 
@@ -64,12 +66,15 @@ func _on_trap_touched_player() -> void:
 	reset_player()
 	
 func _on_exit_body_entered(body: Node2D) -> void:
-	if body is Player and next_level != null:
-		exit.animate()
-		player.active = false
-		win = true
-		await get_tree().create_timer(1.5).timeout
-		get_tree().change_scene_to_packed(next_level)
+	if body is Player: 
+		if is_final_level || (next_level != null):
+			exit.animate()
+			player.active = false
+			win = true
+			await get_tree().create_timer(1.5).timeout
+			if is_final_level:
+				ui_layer.show_win_screen(true)
+			get_tree().change_scene_to_packed(next_level)
 
 func reset_player() ->void:
 	player.velocity = Vector2.ZERO
