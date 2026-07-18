@@ -77,6 +77,7 @@ func _on_exit_body_entered(body: Node2D) -> void:
 			get_tree().change_scene_to_packed(next_level)
 
 func reset_player() ->void:
+	AudioPlayer.play_sfx("hurt")
 	player.velocity = Vector2.ZERO
 	player.global_position = start.get_spawn_pos()
 	
