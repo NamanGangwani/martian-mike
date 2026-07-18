@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="martian-mike"
-run/main_scene="uid://duc5up0vmt5fc"
+run/main_scene="uid://l36jjll3b3p0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioPlayer="*uid://cworq3fxxeohr"
 
 [display]
 
