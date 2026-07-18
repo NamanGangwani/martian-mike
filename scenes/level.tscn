@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dutmbif8xvi6p" path="res://scenes/saw.tscn" id="4_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://dejssctrp76ja" path="res://scenes/deathzone.tscn" id="4_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://b5s57qk3lrjaq" path="res://scenes/spiked_ball.tscn" id="5_2r41h"]
+[ext_resource type="PackedScene" uid="uid://bhhfhhg0i5t01" path="res://scenes/ui_layer.tscn" id="5_8iemx"]
 [ext_resource type="PackedScene" uid="uid://bomghuft4ceiy" path="res://scenes/tile_map.tscn" id="7_klq6b"]
 [ext_resource type="PackedScene" uid="uid://bwvc430x5l8pf" path="res://scenes/start.tscn" id="9_8c41q"]
 [ext_resource type="PackedScene" uid="uid://i3euag65cvsv" path="res://scenes/exit.tscn" id="10_olg7q"]
@@ -20,6 +21,8 @@ next_level = ExtResource("2_t1rx8")
 
 [node name="Deathzone" parent="." unique_id=638358833 instance=ExtResource("4_t1rx8")]
 position = Vector2(5, -76)
+
+[node name="UILayer" parent="." unique_id=582325782 instance=ExtResource("5_8iemx")]
 
 [node name="Traps" type="Node2D" parent="." unique_id=2075218145]
 
